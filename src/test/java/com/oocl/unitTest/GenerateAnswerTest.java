@@ -40,4 +40,12 @@ public class GenerateAnswerTest {
         Assertions.assertTrue(result);
     }
 
+    @Test
+    public void should_return_true_when_generate_answer_given_no_input_test_length_legal() {
+        AnswerGenerator answerGenerator = new RealAnswerGenerator();
+        int[] answer = answerGenerator.generate();
+
+        Assertions.assertEquals(4,answer.length);
+    }
+
 }
