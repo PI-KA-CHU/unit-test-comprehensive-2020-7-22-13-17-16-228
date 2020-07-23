@@ -34,4 +34,14 @@ public class LegalCheckerTest {
 
         Assertions.assertFalse(islegal);
     }
+
+    @Test
+    void should_return_false_when_check_given_input_guess_1123(){
+        LegalChecker legalChecker = new LegalChecker();
+        int[] inputNumber = {1, 1, 2, 3};
+
+        boolean islegal = legalChecker.checkIsLegal(inputNumber);
+
+        Assertions.assertFalse(islegal);
+    }
 }
