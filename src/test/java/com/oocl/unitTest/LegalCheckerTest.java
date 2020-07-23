@@ -46,9 +46,9 @@ public class LegalCheckerTest {
     }
 
     @Test
-    void should_return_false_when_check_given_input_guess_1923(){
+    void should_return_false_when_check_given_input_guess_11023(){
         LegalChecker legalChecker = new LegalChecker();
-        int[] inputNumber = {1, 1, 2, 3};
+        int[] inputNumber = {1, 10, 2, 3};
 
         boolean islegal = legalChecker.checkIsLegal(inputNumber);
 
