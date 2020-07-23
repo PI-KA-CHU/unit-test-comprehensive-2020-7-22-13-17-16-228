@@ -49,4 +49,24 @@ public class GameControlTest {
         String outputAfterPlayGame = gameControl.playGame(inputGuess2, answer);
         Assertions.assertEquals("you are win!\n",outputAfterPlayGame);
     }
+
+    @Test
+    void should_return_wrong_string_when_start_game_given_input_guess_12345_answer_1234_remainingTimes_3(){
+        int remainingTimes = 3;
+        GameControl gameControl = new GameControl(remainingTimes);
+        int[] inputGuess = {1, 2, 3, 4, 5};
+        int[] answer = {1, 2, 3, 4};
+        AnswerGenerator answerGenerator = Mockito.mock(RealAnswerGenerator.class);
+        when(answerGenerator.generate()).thenReturn(answer);
+        answer = answerGenerator.generate();
+
+        String outputAfterPlayGame = gameControl.start(inputGuess, answer);
+        Assertions.assertEquals("Wrong Input，Input again\n",outputAfterPlayGame);
+    }
 }
+
+
+
+
+
+
