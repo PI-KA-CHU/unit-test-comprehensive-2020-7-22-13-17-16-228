@@ -4,6 +4,7 @@ public class GameControl {
 
     private int remainingTimes;
     private GuessNumber guessNumber;
+    private boolean isWin = false;
 
     public GameControl(int remainingTimes) {
         this.remainingTimes = remainingTimes;
@@ -19,19 +20,20 @@ public class GameControl {
     }
 
     public String playGame(int[] inputGuess, int[] answer) {
-        if (hasRemainingTimes()) {
-            setRemainingTimes(this.remainingTimes - 1);
-            return guessNumber.guess(inputGuess, answer) + "\n";
+        if (isWin) {
+            return "you are win!\n";
         }
-
+        if (remainingTimes > 0) {
+            setRemainingTimes(this.remainingTimes - 1);
+            String output = guessNumber.guess(inputGuess, answer);
+            if ("4A0B".equals(output)) {
+                this.isWin = true;
+                return "you are win!\n";
+            }
+            return output;
+        }
         return "Wrong Input，Input again\n";
     }
 
-    private boolean hasRemainingTimes(){
-        if (this.remainingTimes > 0) {
-            return true;
-        }
 
-        return false;
-    }
 }
