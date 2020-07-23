@@ -17,10 +17,10 @@ public class GuessNumberTest {
     }
 
     @Test
-    void should_return_2A2B_when_guess_given_answer_1234_and_input_guess_1256(){
+    void should_return_2A2B_when_guess_given_answer_1234_and_input_guess_1243(){
         GuessNumber guessNumber = new GuessNumber();
         int[] answer = {1, 2, 3, 4};
-        int[] inputGuess = {1, 2, 5, 6};
+        int[] inputGuess = {1, 2, 4, 3};
 
         String result = guessNumber.guess(inputGuess, answer);
 
