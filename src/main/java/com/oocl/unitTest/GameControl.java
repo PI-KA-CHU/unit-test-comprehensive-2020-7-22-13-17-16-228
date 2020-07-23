@@ -42,7 +42,7 @@ public class GameControl {
             }
             return output + "\n";
         }
-        return "Wrong Input，Input again\n";
+        return "you are fail\n";
     }
 
     public String start(int[] inputGuess, int[] answer){
