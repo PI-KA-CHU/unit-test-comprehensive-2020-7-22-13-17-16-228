@@ -25,4 +25,19 @@ public class GenerateAnswerTest {
         Assertions.assertTrue(result);
     }
 
+    @Test
+    public void should_return_true_when_generate_answer_given_no_input_test_range_legal() {
+        AnswerGenerator answerGenerator = new RealAnswerGenerator();
+        int[] answer = answerGenerator.generate();
+        boolean result = true;
+
+        for (int num : answer) {
+            if (num < 0 || num > 9) {
+                result = false;
+            }
+        }
+
+        Assertions.assertTrue(result);
+    }
+
 }
