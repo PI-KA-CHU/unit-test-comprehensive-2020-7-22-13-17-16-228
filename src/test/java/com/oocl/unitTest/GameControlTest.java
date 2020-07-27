@@ -19,7 +19,7 @@ public class GameControlTest {
         when(answerGenerator.generate()).thenReturn(answer);
 
         String outputAfterPlayGame = gameControl.playGame(inputGuess,answerGenerator.generate());
-        Assertions.assertEquals("2A2B\n",outputAfterPlayGame);
+        Assertions.assertEquals("2A2B",outputAfterPlayGame);
     }
 
     // 当没有剩余游戏次数时的检测
@@ -33,7 +33,7 @@ public class GameControlTest {
         when(answerGenerator.generate()).thenReturn(answer);
 
         String outputAfterPlayGame = gameControl.playGame(inputGuess,answerGenerator.generate());
-        Assertions.assertEquals("you are fail\n",outputAfterPlayGame);
+        Assertions.assertEquals("you are fail",outputAfterPlayGame);
     }
 
     // 当赢了游戏之后，再次进入游戏的检测
@@ -50,7 +50,7 @@ public class GameControlTest {
         answer = answerGenerator.generate();
         gameControl.playGame(inputGuess, answer);
         String outputAfterPlayGame = gameControl.playGame(inputGuess2, answer);
-        Assertions.assertEquals("you are win!\n",outputAfterPlayGame);
+        Assertions.assertEquals("you are win!",outputAfterPlayGame);
     }
 
     // 检验启动游戏后的输入合法功能1 - 检验失败
@@ -65,7 +65,7 @@ public class GameControlTest {
         answer = answerGenerator.generate();
 
         String outputAfterPlayGame = gameControl.start(inputGuess, answer);
-        Assertions.assertEquals("Wrong Input，Input again\n",outputAfterPlayGame);
+        Assertions.assertEquals("Wrong Input，Input again",outputAfterPlayGame);
     }
 
     // 检验启动游戏后的输入合法功能1 - 检验成功
@@ -80,7 +80,7 @@ public class GameControlTest {
         answer = answerGenerator.generate();
 
         String outputAfterPlayGame = gameControl.start(inputGuess, answer);
-        Assertions.assertEquals("2A2B\n",outputAfterPlayGame);
+        Assertions.assertEquals("2A2B",outputAfterPlayGame);
     }
 }
 

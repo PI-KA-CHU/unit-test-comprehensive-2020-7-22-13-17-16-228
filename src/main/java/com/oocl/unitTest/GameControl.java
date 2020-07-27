@@ -1,5 +1,7 @@
 package com.oocl.unitTest;
 
+import com.oocl.unitTest.enums.GameEnums;
+
 public class GameControl {
 
     private int remainingTimes;
@@ -7,15 +9,16 @@ public class GameControl {
     private LegalChecker legalChecker;
     private boolean isWin = false;
 
+    private String WRONG_INPUT_MESSAGE = GameEnums.WRONG_INPUT.getMessage();
+    private String WIN_GAME_MESSAGE = GameEnums.WIN_GAME.getMessage();
+    private String FAIL_GAME_MESSAGE = GameEnums.FAIL_GAME.getMessage();
+
     public GameControl(int remainingTimes) {
         this.remainingTimes = remainingTimes;
         this.guessNumber = new GuessNumber();
-        legalChecker = new LegalChecker();
+        this.legalChecker = new LegalChecker();
     }
 
-    public int getRemainingTimes() {
-        return remainingTimes;
-    }
 
     public void setRemainingTimes(int remainingTimes) {
         this.remainingTimes = remainingTimes;
@@ -24,25 +27,25 @@ public class GameControl {
     private String isInputLegal(int[] inputNumber){
         boolean isLegal = legalChecker.checkIsLegal(inputNumber);
         if (!isLegal) {
-            return "Wrong Input，Input again\n";
+            return WRONG_INPUT_MESSAGE;
         }
         return null;
     }
 
     public String playGame(int[] inputGuess, int[] answer) {
         if (isWin) {
-            return "you are win!\n";
+            return WIN_GAME_MESSAGE;
         }
         if (remainingTimes > 0) {
             setRemainingTimes(this.remainingTimes - 1);
             String output = guessNumber.guess(inputGuess, answer);
             if ("4A0B".equals(output)) {
                 this.isWin = true;
-                return "you are win!\n";
+                return WIN_GAME_MESSAGE;
             }
-            return output + "\n";
+            return output;
         }
-        return "you are fail\n";
+        return FAIL_GAME_MESSAGE;
     }
 
     public String start(int[] inputGuess, int[] answer){
