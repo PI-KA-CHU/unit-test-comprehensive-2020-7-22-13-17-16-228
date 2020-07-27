@@ -1,9 +1,7 @@
 package com.oocl.unitTest;
 
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class LegalChecker {
 
@@ -17,22 +15,10 @@ public class LegalChecker {
     }
 
     private boolean checkInputNoRepeat(List<Integer> inputNumber) {
-        Set<Integer> inputNumberSet = new HashSet<>();
-        for (int num : inputNumber) {
-            if (inputNumberSet.contains(num)) {
-                return false;
-            }
-            inputNumberSet.add(num);
-        }
-        return true;
+        return inputNumber.size() == inputNumber.stream().distinct().count();
     }
 
     private boolean checkInputRangeIsLegal(List<Integer> inputNumber) {
-        for (int num : inputNumber) {
-            if (num < 0 || num > 9) {
-                return false;
-            }
-        }
-        return true;
+        return inputNumber.stream().noneMatch(num -> num < 0 || num > 9);
     }
 }

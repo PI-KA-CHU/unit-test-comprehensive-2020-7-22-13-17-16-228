@@ -23,9 +23,9 @@ public class LegalCheckerTest {
         LegalChecker legalChecker = new LegalChecker();
         List<Integer> inputNumber = Arrays.asList(1, 2, 3, 4, 5);
 
-        boolean islegal = legalChecker.checkIsLegal(inputNumber);
+        boolean isLegal = legalChecker.checkIsLegal(inputNumber);
 
-        Assertions.assertFalse(islegal);
+        Assertions.assertFalse(isLegal);
     }
 
     @Test
@@ -33,9 +33,9 @@ public class LegalCheckerTest {
         LegalChecker legalChecker = new LegalChecker();
         List<Integer> inputNumber = Arrays.asList(1, 2, 3);
 
-        boolean islegal = legalChecker.checkIsLegal(inputNumber);
+        boolean isLegal = legalChecker.checkIsLegal(inputNumber);
 
-        Assertions.assertFalse(islegal);
+        Assertions.assertFalse(isLegal);
     }
 
     @Test
@@ -43,9 +43,9 @@ public class LegalCheckerTest {
         LegalChecker legalChecker = new LegalChecker();
         List<Integer> inputNumber = Arrays.asList(1, 1, 2, 3);
 
-        boolean islegal = legalChecker.checkIsLegal(inputNumber);
+        boolean isLegal = legalChecker.checkIsLegal(inputNumber);
 
-        Assertions.assertFalse(islegal);
+        Assertions.assertFalse(isLegal);
     }
 
     @Test
@@ -53,8 +53,8 @@ public class LegalCheckerTest {
         LegalChecker legalChecker = new LegalChecker();
         List<Integer> inputNumber = Arrays.asList(1, 10, 2, 3);
 
-        boolean islegal = legalChecker.checkIsLegal(inputNumber);
+        boolean isLegal = legalChecker.checkIsLegal(inputNumber);
 
-        Assertions.assertFalse(islegal);
+        Assertions.assertFalse(isLegal);
     }
 }
