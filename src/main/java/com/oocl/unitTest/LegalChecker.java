@@ -5,13 +5,17 @@ import java.util.List;
 
 public class LegalChecker {
 
+    private final int INPUT_NUMBER_LENGTH = 4;
+    private final int INPUT_NUMBER_MAX_RANGE = 9;
+    private final int INPUT_NUMBER_MIN_RANGE = 0;
+
     public boolean checkIsLegal(List<Integer> inputNumber) {
         return inputNumber != null && checkInputLengthIsLegal(inputNumber)
                 && checkInputNoRepeat(inputNumber) && checkInputRangeIsLegal(inputNumber);
     }
 
     private boolean checkInputLengthIsLegal(List<Integer> inputNumber) {
-        return inputNumber.size() == 4;
+        return inputNumber.size() == INPUT_NUMBER_LENGTH;
     }
 
     private boolean checkInputNoRepeat(List<Integer> inputNumber) {
@@ -19,6 +23,6 @@ public class LegalChecker {
     }
 
     private boolean checkInputRangeIsLegal(List<Integer> inputNumber) {
-        return inputNumber.stream().noneMatch(num -> num < 0 || num > 9);
+        return inputNumber.stream().noneMatch(num -> num < INPUT_NUMBER_MIN_RANGE || num > INPUT_NUMBER_MAX_RANGE);
     }
 }
