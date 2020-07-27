@@ -42,14 +42,11 @@ public class GameControl {
         if (isWin) {
             return WIN_GAME_MESSAGE;
         }
+
         if (isGameHasRemainingTimes()) {
             reduceRemainingTime();
-            String output = guessNumber.guess(inputGuess, answer);
-            if ("4A0B".equals(output)) {
-                this.isWin = true;
-                return WIN_GAME_MESSAGE;
-            }
-            return output;
+            String guessResult = guessNumber.guess(inputGuess, answer);
+            return checkIsWin(guessResult) ? WIN_GAME_MESSAGE : guessResult;
         }
         return FAIL_GAME_MESSAGE;
     }
@@ -60,5 +57,14 @@ public class GameControl {
 
     private void reduceRemainingTime(){
         this.remainingTimes --;
+    }
+
+    private boolean checkIsWin(String guessResult){
+        final String WIN_RETURN_MESSAGE = "4A0B";
+        if (WIN_RETURN_MESSAGE.equals(guessResult)) {
+            this.isWin = true;
+            return true;
+        }
+        return false;
     }
 }
