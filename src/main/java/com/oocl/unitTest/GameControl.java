@@ -19,33 +19,12 @@ public class GameControl {
         this.legalChecker = new LegalChecker();
     }
 
-
-    public void setRemainingTimes(int remainingTimes) {
-        this.remainingTimes = remainingTimes;
-    }
-
     private String isInputLegal(int[] inputNumber){
         boolean isLegal = legalChecker.checkIsLegal(inputNumber);
         if (!isLegal) {
             return WRONG_INPUT_MESSAGE;
         }
         return null;
-    }
-
-    public String playGame(int[] inputGuess, int[] answer) {
-        if (isWin) {
-            return WIN_GAME_MESSAGE;
-        }
-        if (remainingTimes > 0) {
-            setRemainingTimes(this.remainingTimes - 1);
-            String output = guessNumber.guess(inputGuess, answer);
-            if ("4A0B".equals(output)) {
-                this.isWin = true;
-                return WIN_GAME_MESSAGE;
-            }
-            return output;
-        }
-        return FAIL_GAME_MESSAGE;
     }
 
     public String start(int[] inputGuess, int[] answer){
@@ -57,4 +36,27 @@ public class GameControl {
         return playGame(inputGuess, answer);
     }
 
+    public String playGame(int[] inputGuess, int[] answer) {
+        if (isWin) {
+            return WIN_GAME_MESSAGE;
+        }
+        if (isGameHasRemainingTimes()) {
+            reduceRemainingTime();
+            String output = guessNumber.guess(inputGuess, answer);
+            if ("4A0B".equals(output)) {
+                this.isWin = true;
+                return WIN_GAME_MESSAGE;
+            }
+            return output;
+        }
+        return FAIL_GAME_MESSAGE;
+    }
+
+    private boolean isGameHasRemainingTimes(){
+        return remainingTimes > 0;
+    }
+
+    private void reduceRemainingTime(){
+        this.remainingTimes --;
+    }
 }

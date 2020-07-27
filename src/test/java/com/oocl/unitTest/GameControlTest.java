@@ -1,5 +1,6 @@
 package com.oocl.unitTest;
 
+import com.oocl.unitTest.enums.GameEnums;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -7,6 +8,10 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.when;
 
 public class GameControlTest {
+
+    private String WRONG_INPUT_MESSAGE = GameEnums.WRONG_INPUT.getMessage();
+    private String WIN_GAME_MESSAGE = GameEnums.WIN_GAME.getMessage();
+    private String FAIL_GAME_MESSAGE = GameEnums.FAIL_GAME.getMessage();
 
     // 正常的进行游戏的检测
     @Test
@@ -33,7 +38,7 @@ public class GameControlTest {
         when(answerGenerator.generate()).thenReturn(answer);
 
         String outputAfterPlayGame = gameControl.playGame(inputGuess,answerGenerator.generate());
-        Assertions.assertEquals("you are fail",outputAfterPlayGame);
+        Assertions.assertEquals(FAIL_GAME_MESSAGE,outputAfterPlayGame);
     }
 
     // 当赢了游戏之后，再次进入游戏的检测
@@ -50,7 +55,7 @@ public class GameControlTest {
         answer = answerGenerator.generate();
         gameControl.playGame(inputGuess, answer);
         String outputAfterPlayGame = gameControl.playGame(inputGuess2, answer);
-        Assertions.assertEquals("you are win!",outputAfterPlayGame);
+        Assertions.assertEquals(WIN_GAME_MESSAGE,outputAfterPlayGame);
     }
 
     // 检验启动游戏后的输入合法功能1 - 检验失败
@@ -65,7 +70,7 @@ public class GameControlTest {
         answer = answerGenerator.generate();
 
         String outputAfterPlayGame = gameControl.start(inputGuess, answer);
-        Assertions.assertEquals("Wrong Input，Input again",outputAfterPlayGame);
+        Assertions.assertEquals(WRONG_INPUT_MESSAGE,outputAfterPlayGame);
     }
 
     // 检验启动游戏后的输入合法功能1 - 检验成功
