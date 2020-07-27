@@ -1,12 +1,16 @@
 package com.oocl.unitTest;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class RealAnswerGenerator implements AnswerGenerator {
     @Override
-    public int[] generate() {
+    public List<Integer> generate() {
         int length = 4;
         int maxNum = 9;
         int minNum = 0;
-        int[] result = new int[length];
+        Integer[] result = new Integer[length];
+        Arrays.fill(result, 0);
 
         int count = 0;
         while(count < length) {
@@ -23,6 +27,6 @@ public class RealAnswerGenerator implements AnswerGenerator {
                 count++;
             }
         }
-        return result;
+        return Arrays.asList(result);
     }
 }

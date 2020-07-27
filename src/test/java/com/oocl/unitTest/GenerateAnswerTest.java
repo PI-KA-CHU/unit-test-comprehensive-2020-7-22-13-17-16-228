@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GenerateAnswerTest {
@@ -11,7 +12,7 @@ public class GenerateAnswerTest {
     @Test
     public void should_return_true_when_generate_answer_given_no_input_test_is_repeated() {
         AnswerGenerator answerGenerator = new RealAnswerGenerator();
-        int[] answer = answerGenerator.generate();
+        List<Integer> answer = answerGenerator.generate();
         boolean result = true;
 
         Set<Integer> answerSet = new HashSet<>();
@@ -28,7 +29,7 @@ public class GenerateAnswerTest {
     @Test
     public void should_return_true_when_generate_answer_given_no_input_test_range_legal() {
         AnswerGenerator answerGenerator = new RealAnswerGenerator();
-        int[] answer = answerGenerator.generate();
+        List<Integer> answer = answerGenerator.generate();
         boolean result = true;
 
         for (int num : answer) {
@@ -43,9 +44,9 @@ public class GenerateAnswerTest {
     @Test
     public void should_return_true_when_generate_answer_given_no_input_test_length_legal() {
         AnswerGenerator answerGenerator = new RealAnswerGenerator();
-        int[] answer = answerGenerator.generate();
+        List<Integer> answer = answerGenerator.generate();
 
-        Assertions.assertEquals(4,answer.length);
+        Assertions.assertEquals(4,answer.size());
     }
 
 }

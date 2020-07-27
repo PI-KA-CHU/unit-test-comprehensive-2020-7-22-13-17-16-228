@@ -2,6 +2,8 @@ package com.oocl.unitTest;
 
 import com.oocl.unitTest.enums.GameEnums;
 
+import java.util.List;
+
 public class GameControl {
 
     private int remainingTimes;
@@ -19,7 +21,7 @@ public class GameControl {
         this.legalChecker = new LegalChecker();
     }
 
-    private String isInputLegal(int[] inputNumber){
+    private String isInputLegal(List<Integer> inputNumber){
         boolean isLegal = legalChecker.checkIsLegal(inputNumber);
         if (!isLegal) {
             return WRONG_INPUT_MESSAGE;
@@ -27,7 +29,7 @@ public class GameControl {
         return null;
     }
 
-    public String start(int[] inputGuess, int[] answer){
+    public String start(List<Integer> inputGuess, List<Integer> answer){
         String checkResult = isInputLegal(inputGuess);
         if (checkResult != null) {
             return checkResult;
@@ -36,7 +38,7 @@ public class GameControl {
         return playGame(inputGuess, answer);
     }
 
-    public String playGame(int[] inputGuess, int[] answer) {
+    public String playGame(List<Integer> inputGuess, List<Integer> answer) {
         if (isWin) {
             return WIN_GAME_MESSAGE;
         }

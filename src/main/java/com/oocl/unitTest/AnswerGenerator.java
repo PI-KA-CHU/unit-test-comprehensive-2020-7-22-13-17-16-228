@@ -1,5 +1,7 @@
 package com.oocl.unitTest;
 
+import java.util.List;
+
 public interface AnswerGenerator {
-    int[] generate();
+    List<Integer> generate();
 }

@@ -1,20 +1,21 @@
 package com.oocl.unitTest;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class LegalChecker {
 
-    public boolean checkIsLegal(int[] inputNumber) {
+    public boolean checkIsLegal(List<Integer> inputNumber) {
         return inputNumber != null && checkInputLengthIsLegal(inputNumber)
                 && checkInputNoRepeat(inputNumber) && checkInputRangeIsLegal(inputNumber);
     }
 
-    private boolean checkInputLengthIsLegal(int[] inputNumber) {
-        return inputNumber.length == 4;
+    private boolean checkInputLengthIsLegal(List<Integer> inputNumber) {
+        return inputNumber.size() == 4;
     }
 
-    private boolean checkInputNoRepeat(int[] inputNumber) {
+    private boolean checkInputNoRepeat(List<Integer> inputNumber) {
         Set<Integer> inputNumberSet = new HashSet<>();
         for (int num : inputNumber) {
             if (inputNumberSet.contains(num)) {
@@ -25,7 +26,7 @@ public class LegalChecker {
         return true;
     }
 
-    private boolean checkInputRangeIsLegal(int[] inputNumber) {
+    private boolean checkInputRangeIsLegal(List<Integer> inputNumber) {
         for (int num : inputNumber) {
             if (num < 0 || num > 9) {
                 return false;
